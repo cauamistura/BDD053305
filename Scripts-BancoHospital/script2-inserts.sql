@@ -1,8 +1,8 @@
--- Inserts e updates no banco "Banco_Sistema_Hospital"
+-- Inserts e updates no banco "banco_sistema_hospital"
 
-use Banco_Sistema_Hospital;
+use banco_sistema_hospital;
 
-INSERT INTO `Banco_Sistema_Hospital`.`tAlergia`
+INSERT INTO `banco_sistema_hospital`.`talergia`
 (`bdidAlergia`, `bdAlergia`)
 VALUES
 (1, 'Crustáceos'),
@@ -16,7 +16,7 @@ VALUES
 (9, 'Crustáceos'),
 (10, 'Urticária');
 
-INSERT INTO `Banco_Sistema_Hospital`.`tContatoSeguranca`
+INSERT INTO `banco_sistema_hospital`.`tcontatoseguranca`
 (`bdidContatoSeguranca`, `bdNomeContato`, `bdCpfContato`, `bdTelefoneContato`)
 VALUES
 (1, 'Ana Fávia', '041.565.429-71', '(47)98435-5285'),
@@ -30,7 +30,7 @@ VALUES
 (9, '9', '091.947.409-84', '(47)98435-5285'),
 (10,'10','091.947.409-84', '(47)98435-5285');
 
-INSERT INTO `Banco_Sistema_Hospital`.`tEndereco`
+INSERT INTO `banco_sistema_hospital`.`tendereco`
 (`bdCep`, `bdCidade`, `bdBairro`)
 VALUES
 (89055030, 'Blumenau', 'Fortaleza'),
@@ -44,7 +44,7 @@ VALUES
 (89046638, '7', '7'),
 (89046639, '8', '8');
 
-INSERT INTO `Banco_Sistema_Hospital`.`tPlanoSaude`
+INSERT INTO `banco_sistema_hospital`.`tplanosaude`
 (`bdidPlanoSaude`,`bdNomePlano`,`bdCobertura`)
 VALUES
 (1, 'Unimed', 'Master'),
@@ -59,7 +59,7 @@ VALUES
 (10,'Plano 2', 'Intermediaria');
 
 
-INSERT INTO `Banco_Sistema_Hospital`.`tDoenca`
+INSERT INTO `banco_sistema_hospital`.`tdoenca`
 (`idDoenca`, `bdComobirdade`)
 VALUES
 (1,  'Virose'),
@@ -73,8 +73,8 @@ VALUES
 (9,  'Doenca'),
 (10, 'Doenca');
 
-INSERT INTO `Banco_Sistema_Hospital`.`tDadosPessoa`
-(`bdidPessoa`, `bdNome`, `bdCpf`, `tContatoSeguranca_bdidContatoSeguranca`)
+INSERT INTO `banco_sistema_hospital`.`tdadospessoa`
+(`bdidPessoa`, `bdNome`, `bdCpf`, `tcontatoseguranca_bdidContatoSeguranca`)
 VALUES
 (1, 'Cauã Mistura', '091.947.409-84', 1),
 (2, 'Ana Flávia', '091.947.409-84', 3),
@@ -87,8 +87,8 @@ VALUES
 (9, '1', '1', 3),
 (10, '1', '1', 3);
 
-INSERT INTO `Banco_Sistema_Hospital`.`tEndereco_has_tDadosPessoa`
-(`tEndereco_bdidEndereco`, `tDadosPessoa_bdidPessoa`, `bdNumeroResidencia`)
+INSERT INTO `banco_sistema_hospital`.`tendereco_has_tdadospessoa`
+(`tendereco_bdidEndereco`, `tdadospessoa_bdidPessoa`, `bdNumeroResidencia`)
 VALUES
 (89055030, 1, 40),
 (89055030, 1, 40),
@@ -101,8 +101,8 @@ VALUES
 (89055030, 1, 40),
 (89055030, 1, 40);
 
-INSERT INTO `Banco_Sistema_Hospital`.`tDadosPessoa_has_tAlergia`
-(`tDadosPessoa_bdidPessoa`, `tAlergia_bdidAlergia`)
+INSERT INTO `banco_sistema_hospital`.`tdadospessoa_has_talergia`
+(`tdadospessoa_bdidPessoa`, `talergia_bdidAlergia`)
 VALUES
 (1, 1),
 (1, 2),
@@ -115,13 +115,31 @@ VALUES
 (1, 9),
 (1, 10);
 
-INSERT INTO `Banco_Sistema_Hospital`.`tdadospessoa_has_tDoencas`
-(`tDadosPessoa_bdidPessoa`, `tDoencas_idDoenca`, `bdDataAtendimento`, `bdCurado`)
+INSERT INTO `banco_sistema_hospital`.`tdadospessoa_has_tdoenca`
+(`tDadosPessoa_bdidPessoa`, `tDoenca_idDoenca`, `bdDataAtendimento`, `bdCurado`)
 VALUES
-(1, 3, '2022-11-16', 0);
+(1, 1, '2022-11-16', 0),
+(1, 2, '2022-11-17', 0),
+(1, 3, '2022-11-18', 0),
+(1, 4, '2022-11-19', 0),
+(1, 5, '2022-11-20', 0),
+(1, 6, '2022-11-21', 0),
+(1, 7, '2022-11-22', 0),
+(1, 8, '2022-11-23', 0),
+(1, 9, '2022-11-24', 0),
+(1, 10, '2022-11-25', 0);
 
-INSERT INTO `Banco_Sistema_Hospital`.`tdadospessoa_has_tPlanosaude`
-(`tDadosPessoa_bdidPessoa`, `tPlanosaude_bdidPlanoSaude`)
+INSERT INTO `banco_sistema_hospital`.`tdadospessoa_has_tplanosaude`
+(`tDadosPessoa_bdidPessoa`, `tPlanoSaude_bdidPlanoSaude`)
 VALUES
-(1, 1);
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10);
 

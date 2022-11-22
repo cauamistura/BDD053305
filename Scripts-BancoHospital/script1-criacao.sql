@@ -3,11 +3,11 @@
 -- 30/11 - ESTUDO DE CASO 03 (FINAL) - BD
 -- Cração do Banco
 
-CREATE SCHEMA IF NOT EXISTS `Banco_Sistema_Hospital` DEFAULT CHARACTER SET utf8 ;
-USE `Banco_Sistema_Hospital` ;
+CREATE SCHEMA IF NOT EXISTS `banco_sistema_hospital` DEFAULT CHARACTER SET utf8 ;
+USE `banco_sistema_hospital` ;
 
--- Tabela tContatoSeguranca
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tContatoSeguranca` (
+-- Tabela tcontatoseguranca
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tcontatoseguranca` (
   `bdidContatoSeguranca` INT NOT NULL,
   `bdNomeContato` 		 VARCHAR(255) NULL,
   `bdCpfContato`     	 VARCHAR(18) NULL,
@@ -16,20 +16,20 @@ CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tContatoSeguranca` (
   UNIQUE INDEX `bdidContatoSeguranca_UNIQUE` (`bdidContatoSeguranca` ASC) 
 );
 
--- Tabela tDadosPessoa
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDadosPessoa` (
+-- Tabela tdadospessoa
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tdadospessoa` (
   `bdidPessoa` INT NOT NULL,
   `bdNome` VARCHAR(255) NULL,
   `bdCpf` VARCHAR(18) NULL,
-  `tContatoSeguranca_bdidContatoSeguranca` INT NOT NULL,
-  PRIMARY KEY (`bdidPessoa`, `tContatoSeguranca_bdidContatoSeguranca`),
+  `tcontatoseguranca_bdidContatoSeguranca` INT NOT NULL,
+  PRIMARY KEY (`bdidPessoa`, `tcontatoseguranca_bdidContatoSeguranca`),
 
-    FOREIGN KEY (`tContatoSeguranca_bdidContatoSeguranca`)
-    REFERENCES `Banco_Sistema_Hospital`.`tContatoSeguranca` (`bdidContatoSeguranca`)
+    FOREIGN KEY (`tcontatoseguranca_bdidContatoSeguranca`)
+    REFERENCES `banco_sistema_hospital`.`tcontatoseguranca` (`bdidContatoSeguranca`)
 );
 
--- Tabela tPlanoSaude
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tPlanoSaude` (
+-- Tabela tplanosaude
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tplanosaude` (
   `bdidPlanoSaude` INT NOT NULL,
   `bdNomePlano` VARCHAR(100) NULL,
   `bdCobertura` VARCHAR(50) NULL,
@@ -37,80 +37,79 @@ CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tPlanoSaude` (
   UNIQUE INDEX `bdidPlanoSaude_UNIQUE` (`bdidPlanoSaude` ASC) 
 );
 
--- Tabela tDadosPessoa_has_tPlanoSaude
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDadosPessoa_has_tPlanoSaude` (
-  `tDadosPessoa_bdidPessoa` INT NOT NULL,
-  `tPlanoSaude_bdidPlanoSaude` INT NOT NULL,
-  PRIMARY KEY (`tDadosPessoa_bdidPessoa`, `tPlanoSaude_bdidPlanoSaude`),
+-- Tabela tdadospessoa_has_tplanosaude
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tdadospessoa_has_tplanosaude` (
+  `tdadospessoa_bdidPessoa` INT NOT NULL,
+  `tplanosaude_bdidPlanoSaude` INT NOT NULL,
+  PRIMARY KEY (`tdadospessoa_bdidPessoa`, `tplanosaude_bdidPlanoSaude`),
 
-    FOREIGN KEY (`tDadosPessoa_bdidPessoa`)
-    REFERENCES `Banco_Sistema_Hospital`.`tDadosPessoa` (`bdidPessoa`),
+    FOREIGN KEY (`tdadospessoa_bdidPessoa`)
+    REFERENCES `banco_sistema_hospital`.`tdadospessoa` (`bdidPessoa`),
 
-    FOREIGN KEY (`tPlanoSaude_bdidPlanoSaude`)
-    REFERENCES `Banco_Sistema_Hospital`.`tPlanoSaude` (`bdidPlanoSaude`)
+    FOREIGN KEY (`tplanosaude_bdidPlanoSaude`)
+    REFERENCES `banco_sistema_hospital`.`tplanosaude` (`bdidPlanoSaude`)
 );
 
--- Tabela tDoencas
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDoenca` (
+-- Tabela tdoencas
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tdoenca` (
   `idDoenca` INT NOT NULL,
   `bdComobirdade` VARCHAR(50) NULL,
-  PRIMARY KEY (`idDoenca`),
-  UNIQUE INDEX `idDoenca_UNIQUE` (`idDoenca` ASC) 
+  PRIMARY KEY (`idDoenca`)
 );
 
--- Tabela tDadosPessoa_has_tDoenca
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDadosPessoa_has_tDoenca` (
-  `tDadosPessoa_bdidPessoa` INT NOT NULL,
-  `tDoenca_idDoenca` INT NOT NULL,
+-- Tabela tdadospessoa_has_tdoenca
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tdadospessoa_has_tdoenca` (
+  `tdadospessoa_bdidPessoa` INT NOT NULL,
+  `tdoenca_idDoenca` INT NOT NULL,
   `bdDataAtendimento` DATE NULL,
   `bdCurado` TINYINT NULL,
-  PRIMARY KEY (`tDadosPessoa_bdidPessoa`, `tDoenca_idDoenca`),
+  PRIMARY KEY (`tdadospessoa_bdidPessoa`, `tdoenca_idDoenca`),
 
-    FOREIGN KEY (`tDadosPessoa_bdidPessoa`)
-    REFERENCES `Banco_Sistema_Hospital`.`tDadosPessoa` (`bdidPessoa`),
+    FOREIGN KEY (`tdadospessoa_bdidPessoa`)
+    REFERENCES `banco_sistema_hospital`.`tdadospessoa` (`bdidPessoa`),
 
-    FOREIGN KEY (`tDoenca_idDoenca`)
-    REFERENCES `Banco_Sistema_Hospital`.`tDoenca` (`idDoenca`)
+    FOREIGN KEY (`tdoenca_idDoenca`)
+    REFERENCES `banco_sistema_hospital`.`tdoenca` (`idDoenca`)
 );
 
--- Tabela tAlergia
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tAlergia` (
+-- Tabela talergia
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`talergia` (
   `bdidAlergia` INT NOT NULL,
   `bdAlergia` VARCHAR(45) NULL,
   PRIMARY KEY (`bdidAlergia`)
 );
 
--- Tabela tDadosPessoa_has_tAlergia
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDadosPessoa_has_tAlergia` (
-  `tDadosPessoa_bdidPessoa` INT NOT NULL,
-  `tAlergia_bdidAlergia` INT NOT NULL,
-  PRIMARY KEY (`tDadosPessoa_bdidPessoa`, `tAlergia_bdidAlergia`),
+-- Tabela tdadospessoa_has_talergia
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tdadospessoa_has_talergia` (
+  `tdadospessoa_bdidPessoa` INT NOT NULL,
+  `talergia_bdidAlergia` INT NOT NULL,
+  PRIMARY KEY (`tdadospessoa_bdidPessoa`, `talergia_bdidAlergia`),
 
-    FOREIGN KEY (`tDadosPessoa_bdidPessoa`)
-    REFERENCES `Banco_Sistema_Hospital`.`tDadosPessoa` (`bdidPessoa`),
+    FOREIGN KEY (`tdadospessoa_bdidPessoa`)
+    REFERENCES `banco_sistema_hospital`.`tdadospessoa` (`bdidPessoa`),
 
-    FOREIGN KEY (`tAlergia_bdidAlergia`)
-    REFERENCES `Banco_Sistema_Hospital`.`tAlergia` (`bdidAlergia`)
+    FOREIGN KEY (`talergia_bdidAlergia`)
+    REFERENCES `banco_sistema_hospital`.`talergia` (`bdidAlergia`)
 );
 
--- Tabela tEndereco
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tEndereco` (
+-- Tabela tendereco
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tendereco` (
   `bdCep` INT NOT NULL,
   `bdCidade` VARCHAR(100) NULL,
   `bdBairro` VARCHAR(45) NULL,
   PRIMARY KEY (`bdCep`)
 );
 
--- Tabela tEndereco_has_tDadosPessoa
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tEndereco_has_tDadosPessoa` (
-  `tEndereco_bdidEndereco` INT NOT NULL,
-  `tDadosPessoa_bdidPessoa` INT NOT NULL,
+-- Tabela tendereco_has_tdadospessoa
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tendereco_has_tdadospessoa` (
+  `tendereco_bdidEndereco` INT NOT NULL,
+  `tdadospessoa_bdidPessoa` INT NOT NULL,
   `bdNumeroResidencia` INT NULL,
 
-    FOREIGN KEY (`tEndereco_bdidEndereco`)
-    REFERENCES `Banco_Sistema_Hospital`.`tEndereco` (`bdCep`),
+    FOREIGN KEY (`tendereco_bdidEndereco`)
+    REFERENCES `banco_sistema_hospital`.`tendereco` (`bdCep`),
 
-    FOREIGN KEY (`tDadosPessoa_bdidPessoa`)
-    REFERENCES `Banco_Sistema_Hospital`.`tDadosPessoa` (`bdidPessoa`)
+    FOREIGN KEY (`tdadospessoa_bdidPessoa`)
+    REFERENCES `banco_sistema_hospital`.`tdadospessoa` (`bdidPessoa`)
 );
 
