@@ -51,26 +51,26 @@ CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDadosPessoa_has_tPlanoSaud
 );
 
 -- Tabela tDoencas
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tHistoricoDoenca` (
+CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDoenca` (
   `idDoenca` INT NOT NULL,
   `bdComobirdade` VARCHAR(50) NULL,
   PRIMARY KEY (`idDoenca`),
   UNIQUE INDEX `idDoenca_UNIQUE` (`idDoenca` ASC) 
 );
 
--- Tabela tDadosPessoa_has_tHistoricoDoenca
-CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDadosPessoa_has_tHistoricoDoenca` (
+-- Tabela tDadosPessoa_has_tDoenca
+CREATE TABLE IF NOT EXISTS `Banco_Sistema_Hospital`.`tDadosPessoa_has_tDoenca` (
   `tDadosPessoa_bdidPessoa` INT NOT NULL,
-  `tHistoricoDoenca_idDoenca` INT NOT NULL,
+  `tDoenca_idDoenca` INT NOT NULL,
   `bdDataAtendimento` DATE NULL,
   `bdCurado` TINYINT NULL,
-  PRIMARY KEY (`tDadosPessoa_bdidPessoa`, `tHistoricoDoenca_idDoenca`),
+  PRIMARY KEY (`tDadosPessoa_bdidPessoa`, `tDoenca_idDoenca`),
 
     FOREIGN KEY (`tDadosPessoa_bdidPessoa`)
     REFERENCES `Banco_Sistema_Hospital`.`tDadosPessoa` (`bdidPessoa`),
 
-    FOREIGN KEY (`tHistoricoDoenca_idDoenca`)
-    REFERENCES `Banco_Sistema_Hospital`.`tHistoricoDoenca` (`idDoenca`)
+    FOREIGN KEY (`tDoenca_idDoenca`)
+    REFERENCES `Banco_Sistema_Hospital`.`tDoenca` (`idDoenca`)
 );
 
 -- Tabela tAlergia
