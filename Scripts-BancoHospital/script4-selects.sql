@@ -1,5 +1,5 @@
 select 
-		d.bdCpf 		 	 as CPF, 
+	d.bdCpf 		 as CPF, 
         d.bdNome         	 as Nome,
         ed.bdCep         	 as CEP,
         ed.bdCidade 	 	 as Cidade,
