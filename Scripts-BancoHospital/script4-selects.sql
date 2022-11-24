@@ -11,15 +11,15 @@ select
         dd.bdDataAtendimento     as Atendimento
 from tdadospessoa as d
 -- puxando dados do endereco
-inner join tendereco					as ed on d.tendereco_bdCep = ed.bdCep
+inner join tendereco			as ed on d.tendereco_bdCep = ed.bdCep
 -- puxando dados do contato de segurança
-inner join tcontatoseguranca 			as cs on d.tcontatoseguranca_bdidContatoSeguranca = cs.bdidContatoSeguranca
+inner join tcontatoseguranca 		as cs on d.tcontatoseguranca_bdidContatoSeguranca = cs.bdidContatoSeguranca
 -- puxando dados das alergias
 inner join tdadospessoa_has_talergia 	as da on d.bdidPessoa = da.tdadospessoa_bdidPessoa
-inner join talergia						as a  on da.talergia_bdidAlergia = da.talergia_bdidAlergia
+inner join talergia			as a  on da.talergia_bdidAlergia = da.talergia_bdidAlergia
 -- puxando dados das comobirdades
 inner join tdadospessoa_has_tdoenca  	as dd on d.bdidPessoa = dd.tdadospessoa_bdidPessoa
-inner join tdoenca						as dc on dd.tdoenca_idDoenca = dc.idDoenca
+inner join tdoenca			as dc on dd.tdoenca_idDoenca = dc.idDoenca
 -- puxando dados do plano de saude 
 inner join tdadospessoa_has_tplanosaude as dp on d.bdidPessoa = dp.tdadospessoa_bdidPessoa
-inner join tplanosaude					as ps on dp.tplanosaude_bdidPlanoSaude = ps.bdidPlanoSaude;
+inner join tplanosaude			as ps on dp.tplanosaude_bdidPlanoSaude = ps.bdidPlanoSaude;
