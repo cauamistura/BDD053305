@@ -8,7 +8,7 @@ select
         ps.bdNomePlano 	 	 as Plano_de_Saude,
         a.bdAlergia      	 as Alergia,
         dc.bdComobirdade 	 as Comorbidade, 
-        dd.bdDataAtendimento as Atendimento
+        dd.bdDataAtendimento     as Atendimento
 from tdadospessoa as d
 -- puxando dados do endereco
 inner join tendereco					as ed on d.tendereco_bdCep = ed.bdCep
