@@ -16,16 +16,28 @@ CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tcontatoseguranca` (
   UNIQUE INDEX `bdidContatoSeguranca_UNIQUE` (`bdidContatoSeguranca` ASC) 
 );
 
+-- Tabela tendereco
+CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tendereco` (
+  `bdCep` INT NOT NULL,
+  `bdCidade` VARCHAR(100) NULL,
+  `bdBairro` VARCHAR(45) NULL,
+  PRIMARY KEY (`bdCep`)
+);
+
 -- Tabela tdadospessoa
 CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tdadospessoa` (
   `bdidPessoa` INT NOT NULL,
   `bdNome` VARCHAR(255) NULL,
   `bdCpf` VARCHAR(18) NULL,
+  `tendereco_bdCep` INT NOT NULL,
   `tcontatoseguranca_bdidContatoSeguranca` INT NOT NULL,
   PRIMARY KEY (`bdidPessoa`, `tcontatoseguranca_bdidContatoSeguranca`),
 
     FOREIGN KEY (`tcontatoseguranca_bdidContatoSeguranca`)
-    REFERENCES `banco_sistema_hospital`.`tcontatoseguranca` (`bdidContatoSeguranca`)
+    REFERENCES `banco_sistema_hospital`.`tcontatoseguranca` (`bdidContatoSeguranca`),
+
+    FOREIGN KEY (`tendereco_bdCep`)
+    REFERENCES `banco_sistema_hospital`.`tendereco` (`bdCep`)
 );
 
 -- Tabela tplanosaude
@@ -91,25 +103,3 @@ CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tdadospessoa_has_talergia` 
     FOREIGN KEY (`talergia_bdidAlergia`)
     REFERENCES `banco_sistema_hospital`.`talergia` (`bdidAlergia`)
 );
-
--- Tabela tendereco
-CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tendereco` (
-  `bdCep` INT NOT NULL,
-  `bdCidade` VARCHAR(100) NULL,
-  `bdBairro` VARCHAR(45) NULL,
-  PRIMARY KEY (`bdCep`)
-);
-
--- Tabela tendereco_has_tdadospessoa
-CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tendereco_has_tdadospessoa` (
-  `tendereco_bdidEndereco` INT NOT NULL,
-  `tdadospessoa_bdidPessoa` INT NOT NULL,
-  `bdNumeroResidencia` INT NULL,
-
-    FOREIGN KEY (`tendereco_bdidEndereco`)
-    REFERENCES `banco_sistema_hospital`.`tendereco` (`bdCep`),
-
-    FOREIGN KEY (`tdadospessoa_bdidPessoa`)
-    REFERENCES `banco_sistema_hospital`.`tdadospessoa` (`bdidPessoa`)
-);
-

@@ -74,32 +74,18 @@ VALUES
 (10, 'Doenca');
 
 INSERT INTO `banco_sistema_hospital`.`tdadospessoa`
-(`bdidPessoa`, `bdNome`, `bdCpf`, `tcontatoseguranca_bdidContatoSeguranca`)
+(`bdidPessoa`, `bdNome`, `bdCpf`, `tendereco_bdCep`, `tcontatoseguranca_bdidContatoSeguranca`)
 VALUES
-(1, 'Cauã Mistura', '091.947.409-84', 1),
-(2, 'Ana Flávia', '091.947.409-84', 3),
-(3, '1', '1', 3),
-(4, '1', '1', 3),
-(5, '1', '1', 3),
-(6, '1', '1', 3),
-(7, '1', '1', 3),
-(8, '1', '1', 3),
-(9, '1', '1', 3),
-(10, '1', '1', 3);
-
-INSERT INTO `banco_sistema_hospital`.`tendereco_has_tdadospessoa`
-(`tendereco_bdidEndereco`, `tdadospessoa_bdidPessoa`, `bdNumeroResidencia`)
-VALUES
-(89055030, 1, 40),
-(89055030, 1, 40),
-(89055030, 1, 40),
-(89055030, 1, 40),
-(89055030, 1, 40),
-(89055030, 1, 40),
-(89055030, 1, 40),
-(89055030, 1, 40),
-(89055030, 1, 40),
-(89055030, 1, 40);
+(1, 'Cauã Mistura', '091.947.409-84', 89055030, 1),
+(2, 'Ana Flávia', '091.947.409-84', 89055030, 3),
+(3, '1', '1', 89055030, 3),
+(4, '1', '1', 89055030, 3),
+(5, '1', '1', 89055030, 3),
+(6, '1', '1', 89055030, 3),
+(7, '1', '1', 89055030, 3),
+(8, '1', '1', 89055030, 3),
+(9, '1', '1', 89055030, 3),
+(10, '1', '1', 89055030, 3);
 
 INSERT INTO `banco_sistema_hospital`.`tdadospessoa_has_talergia`
 (`tdadospessoa_bdidPessoa`, `talergia_bdidAlergia`)
@@ -142,4 +128,3 @@ VALUES
 (1, 8),
 (1, 9),
 (1, 10);
-

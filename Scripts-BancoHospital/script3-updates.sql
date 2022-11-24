@@ -1,3 +1,30 @@
+-- updates tabela tdadospessoa
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa`
+SET
+`tcontatoseguranca_bdidContatoSeguranca` = 4
+WHERE `bdidPessoa` = 3 AND `tcontatoseguranca_bdidContatoSeguranca` = 3;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa`
+SET
+`tcontatoseguranca_bdidContatoSeguranca` = 4
+WHERE `bdidPessoa` = 4 AND `tcontatoseguranca_bdidContatoSeguranca` = 3;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa`
+SET
+`tcontatoseguranca_bdidContatoSeguranca` = 4
+WHERE `bdidPessoa` = 5 AND `tcontatoseguranca_bdidContatoSeguranca` = 3;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa`
+SET
+`tcontatoseguranca_bdidContatoSeguranca` = 4
+WHERE `bdidPessoa` = 6 AND `tcontatoseguranca_bdidContatoSeguranca` = 3;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa`
+SET
+`tcontatoseguranca_bdidContatoSeguranca` = 4
+WHERE `bdidPessoa` = 7 AND `tcontatoseguranca_bdidContatoSeguranca` = 3;
+
 -- updates tabela talergia
 
 UPDATE `banco_sistema_hospital`.`talergia`
@@ -258,3 +285,83 @@ SET
 `bdComobirdade` = 'Doenca_editada10'
 WHERE `idDoenca` = 3;
 
+-- updates tabela tdadospessoa_has_talergia
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_talergia`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `talergia_bdidAlergia` = 1;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_talergia`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `talergia_bdidAlergia` = 2;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_talergia`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `talergia_bdidAlergia` = 3;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_talergia`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `talergia_bdidAlergia` = 4;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_talergia`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `talergia_bdidAlergia` = 5;
+
+-- updates tabela tdadospessoa_has_tdoenca
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tdoenca`
+SET
+`bdCurado` = 1
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tdoenca_idDoenca` = 1;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tdoenca`
+SET
+`bdCurado` = 1
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tdoenca_idDoenca` = 2;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tdoenca`
+SET
+`bdCurado` = 1
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tdoenca_idDoenca` = 3;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tdoenca`
+SET
+`bdCurado` = 1
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tdoenca_idDoenca` = 4;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tdoenca`
+SET
+`bdCurado` = 1
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tdoenca_idDoenca` = 5;
+
+-- updates tabela tdadospessoa_has_tplanosaude
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tplanosaude`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tplanosaude_bdidPlanoSaude` = 1;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tplanosaude`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tplanosaude_bdidPlanoSaude` = 2;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tplanosaude`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tplanosaude_bdidPlanoSaude` = 3;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tplanosaude`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tplanosaude_bdidPlanoSaude` = 4;
+
+UPDATE `banco_sistema_hospital`.`tdadospessoa_has_tplanosaude`
+SET
+`tdadospessoa_bdidPessoa` = 2
+WHERE `tdadospessoa_bdidPessoa` = 1 AND `tplanosaude_bdidPlanoSaude` = 5;
