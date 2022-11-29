@@ -3,8 +3,10 @@
 -- 30/11 - ESTUDO DE CASO 03 (FINAL) - BD
 -- Cração do Banco
 
+drop database `banco_sistema_hospital`;
+
 CREATE SCHEMA IF NOT EXISTS `banco_sistema_hospital` DEFAULT CHARACTER SET utf8 ;
-USE `banco_sistema_hospital` ;
+USE `banco_sistema_hospital`;
 
 -- Tabela tcontatoseguranca
 CREATE TABLE IF NOT EXISTS `banco_sistema_hospital`.`tcontatoseguranca` (
